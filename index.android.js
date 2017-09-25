@@ -9,16 +9,33 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  WebView
 } from 'react-native';
 
+const HTMLC = '<div id="myContent">Your HTML content 12</div>'
+const jsCode = "document.querySelector('#myContent').style.backgroundColor = 'red';"
 export default class AwesomeProject2 extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <WebView
+        source= {{html: HTMLC}}
+        injectedJavaScript={jsCode}
+        javaScriptEnabledAndroid={true}
+        style={{marginTop: 20}}/>
+    );
+  }
+}
+//
+/**
+<WebView
+        source={{uri: 'https://github.com/facebook/react-native'}}
+        style={{marginTop: 20}}/>
+        
+<View style={styles.container}>
         <Text style={styles.welcome}>
           Welcome to React Native!
-          Hey, My name is Mr.Cow.
+          Hey, My name is Mr.Cow4.
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.android.js
@@ -27,10 +44,7 @@ export default class AwesomeProject2 extends Component {
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
-      </View>
-    );
-  }
-}
+      </View>*/
 
 const styles = StyleSheet.create({
   container: {
