@@ -14,12 +14,13 @@ import {
 } from 'react-native';
 
 const HTMLC = '<div id="myContent">Your HTML content 12</div>'
-const jsCode = "document.querySelector('#myContent').style.backgroundColor = 'red';"
+const jsCode = "document.querySelector('#myContent').style.backgroundColor = '#7294cc';"
 export default class AwesomeProject2 extends Component {
   render() {
     return (
       <WebView
-        source= {{html: HTMLC}}
+        source={require('./src/test.html')}
+        //source= {{html: HTMLC}}
         injectedJavaScript={jsCode}
         javaScriptEnabledAndroid={true}
         style={{marginTop: 20}}/>
