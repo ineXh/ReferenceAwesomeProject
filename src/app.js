@@ -9,6 +9,7 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
+  Image,
   View,
   TouchableOpacity,
   ScrollView
@@ -25,6 +26,10 @@ export default class AwesomeProject2 extends Component {
       input: undefined
     }
   }
+  
+  onMenuPress() {
+    this.setState({currentCard: undefined});
+  }
 
   onButtonPress(Card, input) {
     this.setState({currentCard: Card, input: input});
@@ -32,8 +37,19 @@ export default class AwesomeProject2 extends Component {
 
   render() {
     return (
-      <View style={styles.body}>
+      <View style={styles.container}>
+
+        <View style={styles.header}>
+          <TouchableOpacity onPress={this.onMenuPress.bind(this)}>
+            <Image style={styles.menuIcon} source={require('../assets/icon-menu.png')} />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Awesome Project 2</Text>
+        </View>
+
+        <View style={styles.body}>
           {this.renderContent()}
+        </View>
+
       </View>
     );
   } // end render
@@ -77,7 +93,7 @@ const styles = StyleSheet.create({
     paddingTop: 22,
     paddingLeft: 20,
     flexDirection: 'row',
-    backgroundColor: '#5894f3',
+    backgroundColor: '#0b5ea5',
     alignItems: 'center',
     zIndex: 1001
   },
@@ -89,7 +105,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 30,
     paddingLeft: 40,
-    backgroundColor: '#223f6b'
+    backgroundColor: '#3c7eb7'
   },
   menuIcon: {
     width: 30,
