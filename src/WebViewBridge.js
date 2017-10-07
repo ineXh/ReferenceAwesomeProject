@@ -34,7 +34,16 @@
  *      msgData.args = [response];
  *      this.myWebView.postMessage(msgData)
  *  }
- *
+ * 
+ // flow
+Webview sends message -> Document store message promise, store message callbacks ->
+React receives message -> React send original message -> 
+Document receives original message -> message promise resolve ->
+Document sends next message -> Document deletes message promise ->
+React runs function from message -> 
+React adds successful and response to Msgdata -> React sends updated Msgdata ->
+Document receives updated message -> Document runs callbacks ->
+Document deletes message callbacks
  */
 (function(){
 
