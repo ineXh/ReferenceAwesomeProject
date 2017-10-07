@@ -38,7 +38,6 @@ export default class AwesomeProject2 extends Component {
   render() {
     return (
       <View style={styles.container}>
-
         <View style={styles.header}>
           <TouchableOpacity onPress={this.onMenuPress.bind(this)}>
             <Image style={styles.menuIcon} source={require('../assets/icon-menu.png')} />
@@ -71,7 +70,7 @@ export default class AwesomeProject2 extends Component {
           <Text style={styles.button}>IntroCard Chris</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={this.onButtonPress.bind(this, WebCard, undefined)}>
-          <Text style={styles.button}>WebCard Duo</Text>
+          <Text style={styles.button}>WebCard</Text>
         </TouchableOpacity>
       </ScrollView>
     );
