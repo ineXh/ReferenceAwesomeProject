@@ -17,6 +17,9 @@ import {
 
 import IntroCard from './IntroCard';
 import WebCard from './WebCard';
+import RowActions1 from './RowActions1';
+import NowCard from './NowCard';
+import IconDrawer from './IconDrawer';
 
 export default class AwesomeProject2 extends Component {
   constructor(props) {
@@ -56,7 +59,7 @@ export default class AwesomeProject2 extends Component {
   renderContent() {
     // render Card
     if (this.state.currentCard) {
-      console.log('render Card')
+      //console.log('render Card')
       const Card = this.state.currentCard;
       return <Card input={this.state.input}/>;
     }
@@ -71,6 +74,15 @@ export default class AwesomeProject2 extends Component {
         </TouchableOpacity>
         <TouchableOpacity onPress={this.onButtonPress.bind(this, WebCard, undefined)}>
           <Text style={styles.button}>WebCard</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, RowActions1)}>
+          <Text style={styles.button}>Row Actions (Google Style)</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, NowCard)}>
+          <Text style={styles.button}>Google Now-Style Card</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, IconDrawer)}>
+          <Text style={styles.button}>Icon Drawer</Text>
         </TouchableOpacity>
       </ScrollView>
     );
@@ -88,8 +100,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   header: {
-    height: 75,
-    paddingTop: 22,
+    height: 60,
+    paddingTop: 0,
     paddingLeft: 20,
     flexDirection: 'row',
     backgroundColor: '#0b5ea5',
