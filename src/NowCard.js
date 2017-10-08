@@ -4,14 +4,19 @@ import Interactable from 'react-native-interactable';
 
 const Screen = Dimensions.get('window');
 
+const Images = [require('../assets/card-photo.jpg'), 
+                require('../assets/airport-photo.jpg'),
+                require('../assets/tinder-photo.jpg')]
+
 export default class NowCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      damping: 1-0.7,
+      damping: 0.6,//1-0.7,
       currentCard: Now,
       title: 'Card X',
-      tension: 300
+      tension: 650,//300,
+      imageIndex: 0,
     };
   }
   renderNowCard(){
@@ -21,6 +26,7 @@ export default class NowCard extends Component {
       return <Card damping={this.state.damping} 
              tension={this.state.tension}
              title={this.state.title}
+             imageIndex={this.state.imageIndex}
              getNextCard = {this.getNextCard.bind(this)}/>;
     }
   }
@@ -28,8 +34,14 @@ export default class NowCard extends Component {
     //console.log('getNextCard')
     if(direction == 'Left'){
       this.setState({currentCard: Now, title: 'Card Left'});
+      this.setState({
+        imageIndex: (this.state.imageIndex + 1)%Images.length
+      });
     }else if(direction == 'Right'){
       this.setState({currentCard: Now, title: 'Card Right'});
+      this.setState({
+        imageIndex: (this.state.imageIndex + 1)%Images.length
+      });
     }
   }
 
@@ -80,13 +92,19 @@ class Now extends Component {
   constructor(props) {
     super(props);
     this._deltaX = new Animated.Value(0);
+    this.state = {centered: true, show: true}
   }
   render() {
+    if(!this.state.show){
+      return false;
+    } 
+    else{
     return (
-      <View style={{marginTop: 20}}>
+      <View style={{marginTop: 20}} ref='nowInstance0'>
         <Interactable.View
             ref='nowInstance'
             horizontalOnly={true}
+            initialPosition={{x: 0}}
             snapPoints={[
               {x: 360, id: 'Right'},
               {x: 0, damping: 1-this.props.damping, tension: this.props.tension},
@@ -97,31 +115,62 @@ class Now extends Component {
             <Animated.View style={[styles.card, {
               opacity: this._deltaX.interpolate({
                 inputRange: [-300, 0, 300],
-                outputRange: [0, 1, 0],
+                outputRange: [1, 1, 1],
                 extrapolateLeft: 'clamp',
                 extrapolateRight: 'clamp'
               })
             }]}>
               <Text style={styles.header}>Info for you</Text>
-              <Image style={styles.image} source={require('../assets/card-photo.jpg')} />
+              <Image style={styles.image} source={Images[this.props.imageIndex]} />
               <Text style={styles.title}>{this.props.title}</Text>
               <Text style={styles.body}>This is the card body, it can be long</Text>
             </Animated.View>
           </Interactable.View>
           </View>
-    );
+      );
+    }
   }
   onButtonPress(name) {
     alert(`Button ${name} pressed`);
   }
   onSnap(event) {
     const snapPointId = event.nativeEvent.id;
-    if(snapPointId) alert('Snap state: ' + snapPointId );
-    //this.props.getNextCard(snapPointId)
+    //if(snapPointId) alert('Snap state: ' + snapPointId );
+    if(snapPointId) console.log(snapPointId)
+    this.props.getNextCard(snapPointId)
+    //centered =this.state.centered;
+    //this.setState({show: false});
+    //this.refs['nowInstance'].changePosition({x: 0});
+    //console.log(this.refs['nowInstance0'])
+    //this.refs['nowInstance0'].hide = true;
     //this.iv.setPosition({x: 0, y: 40});
-    if(snapPointId == 'Left' || snapPointId == 'Right')
+    if(snapPointId == 'Left'){
+      this.refs['nowInstance'].changePosition({x: 360});
+      //this.setState({show: false});
+      //this.refs['nowInstance'].setVelocity({x: 2000});
       this.refs['nowInstance'].snapTo({index: 1});
-    //this.refs['nowInstance'].setPosition({x: 120, y: 40});
+      /*setTimeout(() => {
+          console.log('snap')
+          //this.setState({show: true});
+          this.refs['nowInstance'].snapTo({index: 1});
+          //this.refs['nowInstance'].hide = false;
+          //this.setState({centered: true});
+      }, 1000);*/
+      //this.setState({centered: false});
+    }else if(snapPointId == 'Right'){
+      this.refs['nowInstance'].changePosition({x: -360});
+      //this.setState({show: false});
+      //this.refs['nowInstance'].setVelocity({x: -2000});
+      this.refs['nowInstance'].snapTo({index: 1});
+      /*setTimeout(() => {
+        console.log('snap')
+          //this.setState({show: true});
+          this.refs['nowInstance'].snapTo({index: 1});
+          //this.refs['nowInstance'].hide = false;
+          //this.setState({centered: true});
+      }, 1000);*/
+      //this.setState({centered: false});
+    }
     //this._deltaX = new Animated.Value(0);
   }
 } // end Now

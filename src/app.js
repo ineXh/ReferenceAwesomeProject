@@ -23,6 +23,8 @@ import IconDrawer from './IconDrawer';
 import SwipeableCard from './SwipeableCard';
 import SnapTo from './SnapTo';
 import ChangePosition from './ChangePosition';
+import ChatHeads from './ChatHeads';
+import MoreChatHeads from './MoreChatHeads';
 
 export default class AwesomeProject2 extends Component {
   constructor(props) {
@@ -96,6 +98,15 @@ export default class AwesomeProject2 extends Component {
         <TouchableOpacity onPress={this.onButtonPress.bind(this, ChangePosition)}>
           <Text style={styles.button}>ChangePosition</Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, ChatHeads)}>
+          <Text style={styles.button}>ChatHeads</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, MoreChatHeads)}>
+          <Text style={styles.button}>MoreChatHeads</Text>
+        </TouchableOpacity>
+
+        
+        
         
       </ScrollView>
     );
