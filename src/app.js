@@ -20,6 +20,9 @@ import WebCard from './WebCard';
 import RowActions1 from './RowActions1';
 import NowCard from './NowCard';
 import IconDrawer from './IconDrawer';
+import SwipeableCard from './SwipeableCard';
+import SnapTo from './SnapTo';
+import ChangePosition from './ChangePosition';
 
 export default class AwesomeProject2 extends Component {
   constructor(props) {
@@ -84,6 +87,16 @@ export default class AwesomeProject2 extends Component {
         <TouchableOpacity onPress={this.onButtonPress.bind(this, IconDrawer)}>
           <Text style={styles.button}>Icon Drawer</Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, SwipeableCard)}>
+          <Text style={styles.button}>SwipeableCard</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, SnapTo)}>
+          <Text style={styles.button}>SnapTo</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, ChangePosition)}>
+          <Text style={styles.button}>ChangePosition</Text>
+        </TouchableOpacity>
+        
       </ScrollView>
     );
   } // end renderContent

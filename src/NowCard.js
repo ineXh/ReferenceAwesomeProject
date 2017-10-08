@@ -20,7 +20,16 @@ export default class NowCard extends Component {
       const Card = this.state.currentCard;
       return <Card damping={this.state.damping} 
              tension={this.state.tension}
-             title={this.state.title}/>;
+             title={this.state.title}
+             getNextCard = {this.getNextCard.bind(this)}/>;
+    }
+  }
+  getNextCard(direction){
+    //console.log('getNextCard')
+    if(direction == 'Left'){
+      this.setState({currentCard: Now, title: 'Card Left'});
+    }else if(direction == 'Right'){
+      this.setState({currentCard: Now, title: 'Card Right'});
     }
   }
 
@@ -76,13 +85,14 @@ class Now extends Component {
     return (
       <View style={{marginTop: 20}}>
         <Interactable.View
+            ref='nowInstance'
             horizontalOnly={true}
             snapPoints={[
               {x: 360, id: 'Right'},
               {x: 0, damping: 1-this.props.damping, tension: this.props.tension},
               {x: -360, id: 'Left'}
             ]}
-            onSnap={this.onSnap}
+            onSnap={this.onSnap.bind(this)}
             animatedValueX={this._deltaX}>
             <Animated.View style={[styles.card, {
               opacity: this._deltaX.interpolate({
@@ -107,6 +117,12 @@ class Now extends Component {
   onSnap(event) {
     const snapPointId = event.nativeEvent.id;
     if(snapPointId) alert('Snap state: ' + snapPointId );
+    //this.props.getNextCard(snapPointId)
+    //this.iv.setPosition({x: 0, y: 40});
+    if(snapPointId == 'Left' || snapPointId == 'Right')
+      this.refs['nowInstance'].snapTo({index: 1});
+    //this.refs['nowInstance'].setPosition({x: 120, y: 40});
+    //this._deltaX = new Animated.Value(0);
   }
 } // end Now
 
