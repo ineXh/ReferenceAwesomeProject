@@ -25,6 +25,13 @@ import SnapTo from './SnapTo';
 import ChangePosition from './ChangePosition';
 import ChatHeads from './ChatHeads';
 import MoreChatHeads from './MoreChatHeads';
+import TimingCard from './TimingCard';
+import TimingMultipleCard from './TimingMultipleCard'
+import SpringAnimationCard from './SpringAnimationCard'
+import ParallelAnimationCard from './ParallelAnimationCard'
+import SequenceAnimationCard from './SequenceAnimationCard'
+import StaggerAnimationCard from './StaggerAnimationCard'
+
 
 export default class AwesomeProject2 extends Component {
   constructor(props) {
@@ -104,9 +111,24 @@ export default class AwesomeProject2 extends Component {
         <TouchableOpacity onPress={this.onButtonPress.bind(this, MoreChatHeads)}>
           <Text style={styles.button}>MoreChatHeads</Text>
         </TouchableOpacity>
-
-        
-        
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, TimingCard)}>
+          <Text style={styles.button}>TimingCard</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, TimingMultipleCard)}>
+          <Text style={styles.button}>TimingMultipleCard</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, SpringAnimationCard)}>
+          <Text style={styles.button}>SpringAnimationCard</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, ParallelAnimationCard)}>
+          <Text style={styles.button}>ParallelAnimationCard</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, SequenceAnimationCard)}>
+          <Text style={styles.button}>SequenceAnimationCard</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, StaggerAnimationCard)}>
+          <Text style={styles.button}>StaggerAnimationCard</Text>
+        </TouchableOpacity>
         
       </ScrollView>
     );
@@ -138,8 +160,8 @@ const styles = StyleSheet.create({
   },
   menuContainer: {
     flex: 1,
-    paddingTop: 30,
-    paddingLeft: 40,
+    paddingTop: 10,
+    paddingLeft: 30,
     backgroundColor: '#3c7eb7'
   },
   menuIcon: {

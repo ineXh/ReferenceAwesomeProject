@@ -138,41 +138,16 @@ class Now extends Component {
     //if(snapPointId) alert('Snap state: ' + snapPointId );
     if(snapPointId) console.log(snapPointId)
     this.props.getNextCard(snapPointId)
-    //centered =this.state.centered;
-    //this.setState({show: false});
-    //this.refs['nowInstance'].changePosition({x: 0});
-    //console.log(this.refs['nowInstance0'])
-    //this.refs['nowInstance0'].hide = true;
-    //this.iv.setPosition({x: 0, y: 40});
+    
     if(snapPointId == 'Left'){
       this.refs['nowInstance'].changePosition({x: 360});
-      //this.setState({show: false});
-      //this.refs['nowInstance'].setVelocity({x: 2000});
       this.refs['nowInstance'].snapTo({index: 1});
-      /*setTimeout(() => {
-          console.log('snap')
-          //this.setState({show: true});
-          this.refs['nowInstance'].snapTo({index: 1});
-          //this.refs['nowInstance'].hide = false;
-          //this.setState({centered: true});
-      }, 1000);*/
-      //this.setState({centered: false});
+      //this.refs['nowInstance'].snapTo({index: 1});
     }else if(snapPointId == 'Right'){
       this.refs['nowInstance'].changePosition({x: -360});
-      //this.setState({show: false});
-      //this.refs['nowInstance'].setVelocity({x: -2000});
       this.refs['nowInstance'].snapTo({index: 1});
-      /*setTimeout(() => {
-        console.log('snap')
-          //this.setState({show: true});
-          this.refs['nowInstance'].snapTo({index: 1});
-          //this.refs['nowInstance'].hide = false;
-          //this.setState({centered: true});
-      }, 1000);*/
-      //this.setState({centered: false});
     }
-    //this._deltaX = new Animated.Value(0);
-  }
+  } // end onSnap
 } // end Now
 
 const styles = StyleSheet.create({
