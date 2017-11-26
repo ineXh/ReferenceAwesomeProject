@@ -24,6 +24,7 @@ export default class ChatHeads extends Component {
   render() {
     return (
       <View style={styles.container}>
+        
         <View style={styles.frame}>
           <Animated.Image
             source={require('../assets/chatheads-delete.png')}
@@ -50,6 +51,7 @@ export default class ChatHeads extends Component {
             }
           ]} />
         </View>
+
         <View style={styles.frame} pointerEvents='box-none'>
           <Interactable.View
             snapPoints={[
@@ -68,7 +70,7 @@ export default class ChatHeads extends Component {
                   }]
                 }]}>
                   <Image style={styles.image} 
-                  source={require('../assets/chatheads-face1.jpg')} />
+                  source={require('../assets/1.gif')} />
                 </Animated.View>
               </TouchableOpacity>
           </Interactable.View>
@@ -95,14 +97,16 @@ export default class ChatHeads extends Component {
             </Animated.View>
           </Interactable.View>
         </View>
-      }
+        }
 
       </View>
     );
   }
   onStopInteraction(event, scaleValue) {
+
     const x = event.nativeEvent.x;
     const y = event.nativeEvent.y;
+    console.log('onStopInteraction x: ' + x + ' y: ' + y)
     if (x > -10 && x < 10 && y < 210*heightFactor && y > 190*heightFactor) {
       Animated.timing(scaleValue, {toValue: 0, duration: 300}).start();
     }

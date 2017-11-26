@@ -99,6 +99,7 @@ class Now extends Component {
       return false;
     } 
     else{
+      console.log('render Now')
     return (
       <View style={{marginTop: 20}} ref='nowInstance0'>
         <Interactable.View
@@ -158,7 +159,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#efefef',
   },
   card: {
-    width: Screen.width - 40,
+    width: Screen.width*0.2,
     backgroundColor: 'white',
     borderRadius: 6,
     marginHorizontal: 20,
@@ -170,8 +171,8 @@ const styles = StyleSheet.create({
     elevation: 4
   },
   image: {
-    width: Screen.width - 40,
-    height: Screen.height <= 500 ? 70 : 150
+    width: Screen.width *0.2,
+    height: Screen.height <= 500 ? 35 : 75
   },
   header: {
     marginTop: 8,

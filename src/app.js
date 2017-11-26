@@ -20,6 +20,8 @@ import WebCard from './WebCard';
 import WebCard2 from './WebCard2';
 import RowActions1 from './RowActions1';
 import NowCard from './NowCard';
+import PicArray from './PicArray'
+
 import IconDrawer from './IconDrawer';
 import SwipeableCard from './SwipeableCard';
 import SnapTo from './SnapTo';
@@ -85,6 +87,11 @@ export default class AwesomeProject2 extends Component {
         <TouchableOpacity onPress={this.onButtonPress.bind(this, IntroCard, {name: 'Chris'})}>
           <Text style={styles.button}>IntroCard Chris</Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, PicArray)}>
+          <Text style={styles.button}>PicArray</Text>
+        </TouchableOpacity>
+
+
         <TouchableOpacity onPress={this.onButtonPress.bind(this, WebCard, undefined)}>
           <Text style={styles.button}>WebCard</Text>
         </TouchableOpacity>
