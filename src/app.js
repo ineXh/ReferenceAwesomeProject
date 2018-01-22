@@ -18,6 +18,7 @@ import {
 import IntroCard from './IntroCard';
 import WebCard from './WebCard';
 import WebCard2 from './WebCard2';
+import WebCard3 from './WebCard3';
 import RowActions1 from './RowActions1';
 import NowCard from './NowCard';
 import PicArray from './PicArray'
@@ -97,6 +98,9 @@ export default class AwesomeProject2 extends Component {
         </TouchableOpacity>
         <TouchableOpacity onPress={this.onButtonPress.bind(this, WebCard2, undefined)}>
           <Text style={styles.button}>WebCard 2</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onButtonPress.bind(this, WebCard3, undefined)}>
+          <Text style={styles.button}>WebCard 3</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={this.onButtonPress.bind(this, RowActions1)}>
           <Text style={styles.button}>Row Actions (Google Style)</Text>

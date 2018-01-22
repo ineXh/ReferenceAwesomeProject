@@ -44,7 +44,7 @@ export default class PicArray extends Component {
     };
   }
   render() {
-    console.log('render1')
+    //console.log('render1')
     //<PictureItem name="Raxx" picture={Images[1]}/>
     return (
       <View style={styles.container}>
@@ -59,7 +59,7 @@ export default class PicArray extends Component {
   renderText(){
     return(
     initialArr.map((prop, key) => {
-          console.log(prop)
+          //console.log(prop)
           //<Text style={prop.style} key={key}>{prop.text}</Text>
          return (           
            <PictureItem picture={Images[key]} key={key}/>
@@ -88,14 +88,14 @@ class PictureItem extends Component {
     this.state = {centered: true, show: true}
   }
   render() {
-    console.log('renderX')
+    //console.log('renderX')
     if(!this.state.show){
-      console.log(this.state.show)
+      //console.log(this.state.show)
       return false;
     } 
     else{
-      console.log(this.state.show);
-      console.log(this.props.picture);
+      //console.log(this.state.show);
+      //console.log(this.props.picture);
     return (
       <View style={styles.picContainer} ref='nowInstance0'>
         <Image style={styles.image} source={this.props.picture} />

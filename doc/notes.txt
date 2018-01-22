@@ -1,0 +1,30 @@
+Code Signing Error: Signing for "Draw" requires a development team. Select a development team in the project editor.
+Code Signing Error: Code signing is required for product type 'Application' in SDK 'iOS 11.0'
+
+1. Show the project navagator
+2. General Tab, Signing Team
+check automatically manage signing
+
+3. Butting Settings Tab, Signing
+code signing style: manual
+provisioning profile: none
+
+4.
+Drawtest 
+General Tab, Signing Team
+check automatically manage signing
+
+
+5. 
+https://github.com/facebook/react-native/issues/10027
+takameyer commented on Sep 26 •  edited 
+I got the logs to go away by setting up react-devtools. Here are the steps (using React v0.48):
+
+Install react-devtools: npm install -g react-devtools
+Run react-devtools: react-devtools
+In your project, edit node_modules/react-native/Libraries/Core/Devtools/setupDevtools.js by replacing 'localhost' with your development machine's IP address.
+Build and run your project in Xcode.
+
+find ip address: terminal: 
+ifconfig | grep "inet " | grep -v 127.0.0.1
+192.168.1.71

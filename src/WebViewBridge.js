@@ -103,7 +103,7 @@ Document deletes message callbacks
        };
 
        window.document.addEventListener('message', function(e) {
-           console.log("message received from react native");
+          console.log("message received from react native");
           writeParagraph("message received from react native")
            var message;
            try {
